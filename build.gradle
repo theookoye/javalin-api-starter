@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
+group 'zw.co.digitalnomad'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -13,6 +13,9 @@ dependencies {
 
     // Konf
     implementation 'com.uchuhimo:konf:1.1.2'
+
+    // Jte
+    implementation 'gg.jte:jte:1.12.1'
 
     // MongoDB & Morphia
     implementation 'dev.morphia.morphia:morphia-core:2.2.3'
