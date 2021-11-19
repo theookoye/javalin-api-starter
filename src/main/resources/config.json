@@ -1,0 +1,7 @@
+{
+  "dev": {
+    "port": 8001,
+    "db": "mongodb://localhost:27017/digital-nomad-dev",
+    "signature": "jwt-signing-key-dev"
+  }
+}

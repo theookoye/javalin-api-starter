@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  api:
+    image: "digitalnomad-api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    network_mode: 'host'

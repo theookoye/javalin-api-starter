@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Konf
+    implementation 'com.uchuhimo:konf:1.1.2'
+
+    // MongoDB & Morphia
+    implementation 'dev.morphia.morphia:morphia-core:2.2.3'
+    implementation 'org.mongodb:mongodb-driver-sync:4.4.0'
+
+    // Javalin
+    implementation 'io.javalin:javalin-bundle:4.1.1'
+
+    // Boilerplate Reduction
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+
+    // Auth0 JWT
+    implementation 'com.auth0:java-jwt:3.18.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'zw.co.digitalnomad.Index',
+        )
+    }
+}
+
+task fatJar(type: Jar) {
+    manifest.from jar.manifest
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
+}
